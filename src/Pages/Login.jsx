@@ -20,7 +20,7 @@ const Login = () => {
             password: password
         }
 
-        const response = await axios.post(`http://localhost:5000/login`, userData);
+        const response = await axios.post(`https://ridesyncbackend.onrender.com/login`, userData);
 
         console.log(response.data);
 

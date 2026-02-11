@@ -16,7 +16,6 @@ const Register = () => {
     const [seat, setSeat] = useState('');
 
    
-
     const navigate = useNavigate();
 
     const submitHandler = async  (e) => {
@@ -39,7 +38,7 @@ const Register = () => {
         };
 
        
-        const response = await axios.post(`http://localhost:5000/register`, userData);
+        const response = await axios.post(`https://ridesyncbackend.onrender.com/register`, userData);
 
         if( response.status === 200)
         {
