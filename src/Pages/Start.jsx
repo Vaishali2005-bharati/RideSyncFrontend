@@ -66,7 +66,7 @@ function Start () {
         setStart(e.target.value);
 
         try {
-            const response = await axios.get(`https://ridesyncbackend.onrender.com/maps/get-suggestions`, { 
+            const response = await axios.get(`https://ridesyncbackend2.onrender.com/maps/get-suggestions`, { 
                 params: {
                     input: e.target.value
                 },
@@ -90,7 +90,7 @@ function Start () {
         setDestination(e.target.value);
 
         try {
-            const response = await axios.get(`https://ridesyncbackend.onrender.com/maps/get-suggestions`, {
+            const response = await axios.get(`https://ridesyncbackend2.onrender.com/maps/get-suggestions`, {
                 params: {
                     input: e.target.value
                 },
@@ -120,7 +120,7 @@ function Start () {
             };
 
         try {
-            const response = await axios.post( `https://ridesyncbackend.onrender.com/rides/createRide`, userDetails, 
+            const response = await axios.post( `https://ridesyncbackend2.onrender.com/rides/createRide`, userDetails, 
             {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`

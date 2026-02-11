@@ -38,7 +38,7 @@ const Register = () => {
         };
 
        
-        const response = await axios.post(`https://ridesyncbackend.onrender.com/register`, userData);
+        const response = await axios.post(`https://ridesyncbackend2.onrender.com/register`, userData);
 
         if( response.status === 200)
         {
