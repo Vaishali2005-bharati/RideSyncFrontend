@@ -14,6 +14,8 @@ const Register = () => {
     const [ vehicleColor, setVehicleColor ] = useState('');
     const [ numberPlate, setNumberPlate] = useState('');
     const [seat, setSeat] = useState('');
+    const [ errorMessage, setErrorMessage ] = useState('');
+
 
    
     const navigate = useNavigate();
@@ -45,6 +47,8 @@ const Register = () => {
             const data = response.data;
             localStorage.setItem('token', data.token);
             navigate('/start');
+        } else {
+             setErrorMessage("Registration gone wrong");
         }
 
         setEmail('');
@@ -188,6 +192,10 @@ const Register = () => {
                     placeholder="Total seat available" />
 
                 </fieldset>
+
+                 {errorMessage && (
+                <p className="text-red-500 mb-4">{errorMessage}</p>
+                )}
 
                 <div className="flex flex-row py-4">
                     <button onClick={resetHandler} className="mx-2 px-2 py-1 w-1/2 text-center bg-blue-300 rounded"> Reset </button>

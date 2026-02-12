@@ -8,14 +8,16 @@ const Login = () => {
 
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
-    
+      const [errorMessage, setErrorMessage] = useState("");
+
 
     const navigate = useNavigate();
 
     const  submitHandler = async (e)  => {
         e.preventDefault();
 
-        const userData = {
+        try{
+             const userData = {
             email: email,
             password: password
         }
@@ -31,7 +33,17 @@ const Login = () => {
             
             navigate('/need');
             
+        } else {
+            setErrorMessage("Invalid login credentials");
+           
         }
+        } catch (err) {
+            console.error("Login error: ", err);
+            setErrorMessage("Login failed. Please check your email/password.");
+
+        }
+
+       
 
     }
 
@@ -65,6 +77,10 @@ const Login = () => {
                  onChange={ (e) => setPassword(e.target.value)}
                 placeholder="Password" />
                 <h6 className="px-5 size-sm"> Forgot Password ?</h6>
+
+                  {errorMessage && (
+                 <p className="text-red-500 mb-4">{errorMessage}</p>
+                    )}
 
                 <div className="bg-orange-500 flex flex-cols-down justify-center align-center py-2 mx-4 rounded">
                                     <button onClick = {submitHandler} className="text-center font-bold text-white"> Login </button>
