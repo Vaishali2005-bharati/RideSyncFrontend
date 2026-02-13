@@ -17,10 +17,7 @@ const Login = () => {
         e.preventDefault();
 
         try{
-             const userData = {
-            email: email,
-            password: password
-        }
+            
 
         const response = await axios.post(`https://ridesyncbackend2.onrender.com/login`, 
               { email, password },

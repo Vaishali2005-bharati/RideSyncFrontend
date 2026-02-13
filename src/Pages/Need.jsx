@@ -7,7 +7,7 @@ function Need () {
 
         return (
             <>
-            <div className=" w-full h-80 flex mt-40 p-7 bg-[url('need.jpeg')] bg-cover bg-center ">
+            <div className=" w-full h-80 flex mt-40 p-7 bg-[url('/need.jpeg')] bg-cover bg-center ">
 
             </div>
                 <div className="w-full flex justify-center items-center fixed bottom-2 "> 
