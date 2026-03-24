@@ -1,64 +1,53 @@
-import React, { useEffect, useState } from "react";
-import { LoadScript, GoogleMap, Marker } from "@react-google-maps/api";
+import React, { useState } from "react";
+import { LoadScript, GoogleMap, Marker, Polyline } from "@react-google-maps/api";
 
+function LiveTracking({ location, destination, onMapClick }) {
+  const [routeCoords, setRouteCoords] = useState(null); // ✅ declare state
 
-  // Required: container style for the map
-  const containerStyle = {
-    width: "100%",
-    height: "500px",
+  const handleMapClick = (event) => {
+    const lat = event.latLng.lat();
+    const lng = event.latLng.lng();
+    onMapClick({ lat, lng });
   };
 
-  // Required: initial center of the map
-  const center = {
-    lat: 25.3176, // Example: Varanasi latitude
-    lng: 82.9739, // Example: Varanasi longitude
+  const center = location.lat && location.lng
+    ? { lat: location.lat, lng: location.lng }
+    : { lat: 25.3176, lng: 82.9739 };
+
+let destCoords = null;
+if (destination && destination.includes(",")) {
+  const [lat, lng] = destination.split(",").map(Number);
+  destCoords = { lat, lng };
+} else {
+  // ✅ Default destination: Banaras (Varanasi)
+  destCoords = { lat: 25.3176, lng: 82.9739 };
+}
+React.useEffect(() => {
+  const fetchRoute = async () => {
+   
   };
 
-function LiveTracking({ location }) {
-  const [currentPosition, setCurrentPosition] = useState(center);
-  
-
-  useEffect( () => {
-    navigator.geolocation.getCurrentPosition( (position) => {
-      const { latitude, longitude } = position.coords;
-
-      setCurrentPosition( {
-        lat: latitude,
-        lng: longitude
-      });
-    });
-      return () => navigator.geolocation.clearWatch(watchId);
-  }, []);
-
-  useEffect( () => {
-    const updatePosition = () => {
-      navigator.geolocation.getCurrentPosition( (position) => {
-        const { latitude, longitude } = position.coords;
-
-        console.log("Position Updated: ", latitude, longitude);
-        setCurrentPosition( {
-          lat: latitude,
-          lng: longitude
-        });
-      });
-    };
-    updatePosition();
-  
-    const IntervalId = setInterval( updatePosition, 900000000);
-  }, []);
-
+  fetchRoute();
+}, [location, destCoords]);
 
   return (
-    <LoadScript googleMapsApiKey={import.meta.VITE_GOOGLE_MAPS_API_KEY}>
+    <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
       <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={currentPosition}
-        zoom={15}
+        mapContainerStyle={{ width: "100%", height: "500px" }}
+        center={center}
+        zoom={14}
+        onClick={handleMapClick}
       >
-          <Marker position={currentPosition} />
+        {location.lat && location.lng && (
+          <Marker position={{ lat: location.lat, lng: location.lng }} />
+        )}
 
-        {/* You can add markers or other components here */}
-      </GoogleMap>
+        {destCoords && (
+          <Marker
+            position={destCoords}
+          />
+        )}
+              </GoogleMap>
     </LoadScript>
   );
 }
