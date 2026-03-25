@@ -72,7 +72,7 @@ const submitHandler = async (e) => {
     const originCoords = start.split(",").map(Number);       // [lat, lng]
     const destinationCoords = destination.split(",").map(Number); // [lat, lng]
 
-    const response = await fetch(`http://localhost:5000/user/${userId}/trip`, {
+    const response = await fetch(`https://ridesyncbackend2.onrender.com/user/${userId}/trip`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -124,12 +124,12 @@ const submitHandler = async (e) => {
   }
       try {
             const userId = localStorage.getItem("userId"); 
-            const roleResponse = await axios.get(`http://localhost:5000/user/findrole/${userId}`);
+            const roleResponse = await axios.get(`https://ridesyncbackend2.onrender.com/user/findrole/${userId}`);
 
             const role = roleResponse.data.role; 
             console.log('It is the frontends Role printing in the Start.jsx Role:' , role);
              const destinationCoords = destination.split(",").map(Number);
-          const response3 = await axios.post("http://localhost:5000/user/match", {
+          const response3 = await axios.post("https://ridesyncbackend2.onrender.com/user/match", {
                 userId,
                 role,
                 location: {

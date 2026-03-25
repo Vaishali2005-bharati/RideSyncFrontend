@@ -28,7 +28,7 @@ function RouteMap({ location, destination, onMapClick }) {
     const fetchRoute = async () => {
       if (destCoords && location.lat && location.lng) {
         try {
-          const response = await fetch("http://localhost:5000/user/route", {
+          const response = await fetch("https://ridesyncbackend2.onrender.com/user/route", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

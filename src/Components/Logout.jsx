@@ -8,7 +8,7 @@ function Logout() {
     const userId = localStorage.getItem("userId");
 
     // Reset role + origin + destination in DB
-    await fetch(`http://localhost:5000/users/${userId}/logout`, {
+    await fetch(`https://ridesyncbackend2.onrender.com/users/${userId}/logout`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
     });

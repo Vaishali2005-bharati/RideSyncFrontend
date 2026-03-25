@@ -44,7 +44,7 @@ function Match() {
       const ids = matches.map(m => m._id);
 
       if (ids.length > 0) {
-        const response = await axios.post("http://localhost:5000/user/liveLocations", { ids });
+        const response = await axios.post("https://ridesyncbackend2.onrender.com/user/liveLocations", { ids });
         console.log("Updated live locations:", response.data);
 
         // merge updated locations into matches
@@ -78,7 +78,7 @@ function Match() {
     const feedback = feedbacks[matchId] || "";
     console.log(`Feedback for ${matchId}: ${rating} stars, "${feedback}"`);
     // send to backend
-     const response = await axios.post("http://localhost:5000/user/feedback", { matchId, rating, feedback });
+     const response = await axios.post("https://ridesyncbackend2.onrender.com/user/feedback", { matchId, rating, feedback });
      console.log( ' The response of the feedback of the backend:', response.data);
      setRatings('');
      setFeedbacks('');

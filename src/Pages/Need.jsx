@@ -9,7 +9,7 @@ function Need() {
   const handleRoleSelect = async (role) => {
     const userId = localStorage.getItem("userId"); // assume login ke baad save hai
 
-    await axios.put(`http://localhost:5000/user/${userId}/role`, {
+    await axios.put(`https://ridesyncbackend2.onrender.com/user/${userId}/role`, {
       role,
     });
 
