@@ -19,7 +19,6 @@ const App = () => {
             <Route path = '/register' element = { <Register /> } />
             <Route path = '/need' element = { <Need /> } />
             <Route path = '/start' element = { <Start />} />
-            <Route path = '/test' element = { <Test /> } /> 
             <Route path = '/match' element = { <Match /> } />
 
           </Routes>
