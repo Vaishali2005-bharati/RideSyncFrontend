@@ -4,7 +4,6 @@ import LiveTracking from './../Components/LiveTracking.jsx'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import axios from "axios";
-import RouteMap from "../Components/RouteMap.jsx";
 import { useNavigate } from 'react-router-dom'
 
 function Start () {
@@ -90,34 +89,7 @@ const submitHandler = async (e) => {
     const data = await response.json();
     console.log("Trip Response:", data);
     console.log("✅ Trip saved successfully");
-      // try {
-      //   const response = await axios.post(
-      //     "http://localhost:5000/user/route",
-      //     {
-      //       origin: { lat: location.lat, lng: location.lng },
-      //       destination: { lat: destinationCoords[1], lng: destinationCoords[0] },
-      //     },
-      //     {
-      //       headers: { "Content-Type": "application/json" }
-      //     }
-      //   );
-
-      //   const data = response.data;
-      //   console.log("✅ ORS Route Summary:", data.summary);
-      //   console.log("✅ ORS Route Coordinates:", data.coordinates);
-
-      //   // setRouteCoords(data.coordinates); // [lng, lat] pairs
-      // } catch (err) {
-      //   console.error("Route fetch error:", err);
-      // }
-//       const response2 = await axios.get("http://localhost:5000/user/route", {
-//   params: {
-//     start: `${location.lng},${location.lat}`,
-//     // end: `${destCoords.lng},${destCoords.lat}`
-//     end: `${destinationCoords[1]},${destinationCoords[0]}`
-//   }
-// });
-    
+  
   } catch (err) {
     console.log("Error is in the trip point and sending the location to the backend");
     console.error(err);
@@ -166,11 +138,6 @@ const submitHandler = async (e) => {
                         }} 
                         />
 
-                        {/* <RouteMap
-                             location={location} 
-                        onMapClick={(coords) => {
-                            setDestination(`${coords.lat}, ${coords.lng}`);
-                        }} /> */}
 
                 </div>
                 <div ref= {panelRef} className=" w-full h-screen flex flex-col flex-between items-center bg-white" >
