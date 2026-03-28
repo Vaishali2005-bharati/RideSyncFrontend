@@ -46,6 +46,7 @@ const Register = () => {
         {
             const data = response.data;
             localStorage.setItem('token', data.token);
+             localStorage.setItem("userId", data.userId);
             navigate('/need');
         } else {
              setErrorMessage("Registration gone wrong");
