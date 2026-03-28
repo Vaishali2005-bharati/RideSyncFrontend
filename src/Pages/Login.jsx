@@ -30,6 +30,10 @@ const Login = () => {
         {
              const data = response.data;
             localStorage.setItem('token', data.token);
+            localStorage.setItem("userId", data.userId);
+
+                  console.log("Token:", data.token);
+                 console.log("UserId:", data.userId);
             
             navigate('/need');
             
