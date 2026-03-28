@@ -19,7 +19,7 @@ const Login = () => {
         try{
             
 
-        const response = await axios.post(`https://ridesyncbackend2.onrender.com/login`, 
+        const response = await axios.post(`https://ridesyncbackend2.onrender.com/user/login`, 
               { email, password },
         { withCredentials: true } // important if backend uses cookies/sessions
         );
